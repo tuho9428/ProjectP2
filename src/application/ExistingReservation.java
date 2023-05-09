@@ -20,7 +20,7 @@ public class ExistingReservation extends Reservation {
     }
 
     public void setReservationNumber(String reservationNumber) {
-        this.reservationNumber = reservationNumber;
+    	this.reservationNumber = reservationNumber;
     }
 
 	public double getTotalPrice() {

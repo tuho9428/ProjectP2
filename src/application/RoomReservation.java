@@ -25,6 +25,11 @@ public class RoomReservation extends Reservation {
 		
 	}
 
+	public RoomReservation(Guest guest, Room room, LocalDate checkInDate, LocalDate checkOutDate) {
+		super(checkInDate,checkOutDate,guest);
+		this.room = room;
+	}
+
 	public Room getRoom() {
         return room;
     }
@@ -55,16 +60,16 @@ public class RoomReservation extends Reservation {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
-    }
+    } 
     
 	public String toString() {
 		return 	guest.getFirstName() + " " + guest.getLastName() +
-		" Date In: " + checkInDate + " Date Out: " + checkOutDate + room;
+		" Date In: " + checkInDate + " Date Out: " + checkOutDate + " " + room;
 
 	}
-
-	public void setReservationNumber(String bookingNumber) {
-		// TODO Auto-generated method stub
-		
-	}
+//
+//	public void setReservationNumber(String bookingNumber) {
+//		 ExistingReservation.setReservationNumber(bookingNumber);
+//		
+//	}
 }

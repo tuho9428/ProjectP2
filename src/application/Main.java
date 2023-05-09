@@ -5,15 +5,18 @@ import java.util.*;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
     	// Create instances of the classes required for the booking system
-        BookingSystem bookingSystem = new BookingSystem();
+    	List<Room> rooms = new ArrayList<>();  // Initialize the list with actual rooms
+    	BookingSystem bookingSystem = new BookingSystem(rooms);
         Room room1 = new Room("101", "Single", 100.0, "available" );
         Room room2 = new Room("102", "Double", 150.0, "available");
         Room room3 = new Room("201", "Suite", 200.0, "available");
         Guest guest1 = new Guest("Mr.", "John", "D.", "Doe", "1234567890", "john.doe@example.com");
         Guest guest2 = new Guest("Ms.", "Jane", "E.", "Smith", "9876543210", "jane.smith@example.com");
-
+        rooms.add(room1);
+        rooms.add(room2);
+        rooms.add(room3);
         // Add available rooms to the booking system
         bookingSystem.getAvailableRooms().add(room1);
         bookingSystem.getAvailableRooms().add(room2);
@@ -24,12 +27,16 @@ public class Main {
 
         // Make a new booking
         System.out.println("\nMaking a new booking:");
-        LocalDate checkInDate = new LocalDate(8, 5, 2023); // Replace with desired check-in date
-        LocalDate checkOutDate = new LocalDate(10, 5, 2023); // Replace with desired check-out date
+        LocalDate checkInDate = LocalDate.of(2023,5,5); // Replace with desired check-in date
+        LocalDate checkOutDate = LocalDate.of(2023,5,8); // Replace with desired check-out date
         bookingSystem.checkAvailability(checkInDate, checkOutDate);
 
         // Assume the user selects room2
         Room selectedRoom = room2;
+        
+       
+		//selectedRoom = rooms.get(1); // Get the selected room
+        //bookingSystem.removeRoom(selectedRoom); // Remove the selected room from available rooms
 
         // Assume the user fills out personal details and address
         Address address = new Address("USA", "123 Main St", "", "New York", "12345", "Additional details");
@@ -39,17 +46,27 @@ public class Main {
         guest1.setChildren(0);
 
         // Book the room
-        bookingSystem.bookRoom(selectedRoom, guest1, checkInDate, checkOutDate);
+        String num = bookingSystem.bookRoom(selectedRoom, guest1, checkInDate, checkOutDate);
+        System.out.println(num);
+        
+        
+        //Book 2nd
+        LocalDate checkInDate2 = LocalDate.of(2023,5,10); // Replace with desired check-in date
+        LocalDate checkOutDate2 = LocalDate.of(2023,5,15);
+        bookingSystem.checkAvailability(checkInDate, checkOutDate);
+        
+        //check 3rd
+        bookingSystem.checkAvailability(checkInDate2, checkOutDate2);
 
         // Check existing booking
         System.out.println("\nChecking an existing booking:");
-        Reservation existingBooking = bookingSystem.retrieveBookingDetails("ABC123"); // Replace with actual booking number
+        Reservation existingBooking = bookingSystem.retrieveBookingDetails(num); // Replace with actual booking number
 
         if (existingBooking != null) {
             System.out.println("Booking details: " + existingBooking.toString());
 
             // Retrieve guest details
-            Guest guestDetails = bookingSystem.retrieveGuestDetails(existingBooking.getReservationNumber());
+            String guestDetails = bookingSystem.retrieveGuestDetails(existingBooking.getReservationNumber());
             if (guestDetails != null) {
                 System.out.println("Guest details: " + guestDetails.toString());
             } else {
@@ -58,8 +75,9 @@ public class Main {
         } else {
             System.out.println("Booking not found.");
         }
+
     }
-    	
+    	/**
     	
         // Create a sample Room
         Room room1 = new Room("001", "Single", 90.0, "available");
@@ -119,7 +137,7 @@ public class Main {
 //        } catch (MessagingException e) {
 //            System.out.println("Failed to send email: " + e.getMessage());
 //        }
-        
-        
+           
     }
+    **/
 }

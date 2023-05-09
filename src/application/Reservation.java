@@ -7,6 +7,7 @@ public class Reservation {
 	protected LocalDate checkInDate;
 	protected LocalDate checkOutDate;
 	protected Guest guest;
+	private String reservationNumber;
 
 	
 
@@ -14,6 +15,7 @@ public class Reservation {
 		this.checkInDate = checkInDate;
 		this.checkOutDate = checkOutDate;
 		this.guest = guest;
+		this.reservationNumber = "";
 	}
 
 	public Reservation(Guest guest) {
@@ -56,5 +58,15 @@ public class Reservation {
 		" Date In: " + checkInDate + " Date Out: " + checkOutDate;
 
 	}
+
+	public void setReservationNumber(String bookingNumber) {
+		this.reservationNumber = bookingNumber;
+		
+	}
+
+	public String getReservationNumber() {
+		return this.reservationNumber;
+	}
+
 	
 }

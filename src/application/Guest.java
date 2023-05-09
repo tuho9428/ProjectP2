@@ -97,4 +97,14 @@ public class Guest {
 				middleInitial + " " + lastName + " " + 
 				phoneNumber + " " + emailAddress;
 	}
+
+	public int setAdults(int i) {
+		return RoomReservation.getAdults();
+		
+	}
+
+	public int setChildren(int i) {
+		return RoomReservation.getChildren();
+		
+	}
 }
