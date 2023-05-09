@@ -1,33 +1,60 @@
 package application;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public class Reservation {
-	private Date checkInDate;
-	private Date checkOutDate;
-	private Guest guest;
+	protected LocalDate checkInDate;
+	protected LocalDate checkOutDate;
+	protected Guest guest;
 
-	public void setCheckInDate(Date date) {
-		this.checkInDate = date;
+	
+
+	public Reservation(LocalDate checkInDate, LocalDate checkOutDate, Guest guest) {
+		this.checkInDate = checkInDate;
+		this.checkOutDate = checkOutDate;
+		this.guest = guest;
 	}
 
-	public void setCheckOutDate(Date date) {
-		this.checkOutDate = date;
+	public Reservation(Guest guest) {
+		this.guest = guest;
+	}
+
+	public void setCheckInDate(LocalDate checkInDate) {
+		this.checkInDate = checkInDate;
+	}
+
+	public void setCheckOutDate(LocalDate CheckOutDate) {
+		this.checkOutDate = CheckOutDate;
 	}
 
 	public void setGuest(Guest guest) {
 		this.guest = guest;
 	}
 
-	public Date getCheckInDate() {
+	public LocalDate getCheckInDate() {
 		return this.checkInDate;
 	}
 
-	public Date getCheckOutDate() {
+	public LocalDate getCheckOutDate() {
 		return this.checkOutDate;
 	}
 
 	public Guest getGuest() {
 		return this.guest;
 	}
+	
+	public static String generateBookingNumber() {
+        // Implementation to generate a unique booking number
+        // You can use your own logic here, such as generating a random string or using a counter
+        // For simplicity, let's assume it generates a random 6-digit number
+        return String.format("%06d", (int) (Math.random() * 1000000));
+    }
+	
+	public String toString() {
+		return 	guest.getPhoneNumber() + " " + guest.getLastName() +
+		" Date In: " + checkInDate + " Date Out: " + checkOutDate;
+
+	}
+	
 }

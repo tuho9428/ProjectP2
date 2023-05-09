@@ -1,42 +1,70 @@
 package application;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class RoomReservation extends Reservation {
-	private Room room;
-	private int adults;
-	private int children;
-	private double totalPrice;
+	
 
-	public void setRoom(Room room) {
+	protected Room room;
+	protected double totalPrice;
+	protected static int adults;
+	protected static int children;
+	
+	public RoomReservation(Room room, LocalDate checkInDate, LocalDate checkOutDate, Guest guest) {
+		super(checkInDate,checkOutDate,guest);
 		this.room = room;
 	}
 
-	public Room getRoom() {
-		return this.room;
-	}
-
-	public void setAdults(int adults) {
-		this.adults = adults;
-	}
-
-	public int getAdults() {
-		return this.adults;
-	}
-
-	public void setChildren(int children) {
-		this.children = children;
-	}
-
-	public int getChildren() {
-		return this.children;
-	}
-
-	public void setTotalPrice(double totalPrice) {
+	public RoomReservation(Room room, double totalPrice, LocalDate checkInDate, LocalDate checkOutDate, Guest guest,
+			int adults, int children) {
+		super(checkInDate,checkOutDate,guest);
+		this.room = room;
 		this.totalPrice = totalPrice;
+		RoomReservation.adults = adults;
+		RoomReservation.children = children;
+		
 	}
 
-	public double getTotalPrice() {
-		return this.totalPrice;
+	public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public static int getAdults() {
+        return adults;
+    }
+
+    public void setAdults(int adults) {
+        RoomReservation.adults = adults;
+    }
+
+    public static int getChildren() {
+        return children;
+    }
+
+    public void setChildren(int children) {
+        RoomReservation.children = children;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+    
+	public String toString() {
+		return 	guest.getFirstName() + " " + guest.getLastName() +
+		" Date In: " + checkInDate + " Date Out: " + checkOutDate + room;
+
+	}
+
+	public void setReservationNumber(String bookingNumber) {
+		// TODO Auto-generated method stub
+		
 	}
 }

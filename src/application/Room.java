@@ -1,19 +1,32 @@
 package application;
 
+import java.time.LocalDate;
+
+
 public class Room {
-	private int roomNumber;
+	private String roomNumber;
 	private String roomType;
 	private double price;
 	private String availabilityStatus;
 
-	public Room(int roomNumber, String roomType, double price, String availabilityStatus) {
+	public Room(String roomNumber, String roomType, double price, String availabilityStatus) {
 		this.roomNumber = roomNumber;
 		this.roomType = roomType;
 		this.price = price;
 		this.availabilityStatus = availabilityStatus;
 	}
 
+	public Room(String roomNumber, String roomType, double price) {
+		this.roomNumber = roomNumber;
+		this.roomType = roomType;
+		this.price = price;
+	}
+
 	public boolean isAvailable() {
+		return availabilityStatus.equals("available");
+	}
+	
+	public boolean isAvailable(LocalDate checkInDate,LocalDate checkOutDate) {
 		return availabilityStatus.equals("available");
 	}
 
@@ -22,11 +35,11 @@ public class Room {
 				+ "\nAvailability: " + availabilityStatus;
 	}
 
-	public void setRoomNumber(int roomNumber) {
+	public void setRoomNumber(String roomNumber) {
 		this.roomNumber = roomNumber;
 	}
 
-	public int getRoomNumber() {
+	public String getRoomNumber() {
 		return this.roomNumber;
 	}
 
@@ -53,4 +66,10 @@ public class Room {
 	public String getAvailabilityStatus() {
 		return this.availabilityStatus;
 	}
+	
+	public String toString() {
+		return 	roomNumber + " " + roomType + " " +  availabilityStatus;
+	}
+	
+	
 }

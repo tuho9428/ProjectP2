@@ -7,6 +7,7 @@ public class Guest {
 	private String lastName;
 	private String phoneNumber;
 	private String emailAddress;
+	private Address address;
 
 	public Guest(String prefix, String firstName, String middleInitial, String lastName, String phoneNumber,
 			String emailAddress) {
@@ -17,6 +18,17 @@ public class Guest {
 		this.phoneNumber = phoneNumber;
 		this.emailAddress = emailAddress;
 	}
+	
+	public Guest(String prefix, String firstName, String lastName, String phoneNumber,
+			String emailAddress) {
+		this.prefix = prefix;
+		this.firstName = firstName;
+		this.middleInitial = "";
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.emailAddress = emailAddress;
+	}
+
 
 	public String getPrefix() {
 		return this.prefix;
@@ -64,5 +76,25 @@ public class Guest {
 
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address =  address;
+		
+	}
+
+	public Reservation[] getReservations() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public String toString() {
+		return prefix + " " + firstName + " " +  
+				middleInitial + " " + lastName + " " + 
+				phoneNumber + " " + emailAddress;
 	}
 }

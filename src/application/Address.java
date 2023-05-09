@@ -8,8 +8,8 @@ public class Address {
 	private String zipCode;
 	private String additionalDetails;
 
-	public Address(String country, String address1, String address2, String city, String zipCode,
-			String additionalDetails) {
+	public Address(String address1, String address2, 
+			String city, String zipCode, String country, String additionalDetails) {
 		this.country = country;
 		this.address1 = address1;
 		this.address2 = address2;
@@ -17,6 +17,27 @@ public class Address {
 		this.zipCode = zipCode;
 		this.additionalDetails = additionalDetails;
 	}
+	
+	public Address(String address1, String address2, String city, String zipCode, String country) {
+		this.country = country;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.city = city;
+		this.zipCode = zipCode;
+		this.additionalDetails = "";
+	}
+	
+
+	public Address(String address1, String city, String zipCode, String country) {
+		this.country = country;
+		this.address1 = address1;
+		this.address2 = "";
+		this.city = city;
+		this.zipCode = zipCode;
+		this.additionalDetails = "";
+	}
+
+
 
 	public String getCountry() {
 		return country;
@@ -64,5 +85,11 @@ public class Address {
 
 	public void setAdditionalDetails(String additionalDetails) {
 		this.additionalDetails = additionalDetails;
+	}
+	
+	public String toString() {
+		return 	address1 + " " + address2 + " " +  
+				city + " " + zipCode + " " + country  + " " + 
+				additionalDetails;
 	}
 }
