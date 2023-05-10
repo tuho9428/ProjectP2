@@ -24,6 +24,7 @@ public class Main {
 
         // Test the booking system
         System.out.println("=== Hotel Reservation System ===");
+        System.out.println(LocalDate.now().getDayOfMonth());
 
         // Make a new booking
         System.out.println("\nMaking a new booking:");
@@ -34,10 +35,6 @@ public class Main {
         // Assume the user selects room2
         Room selectedRoom = room2;
         
-       
-		//selectedRoom = rooms.get(1); // Get the selected room
-        //bookingSystem.removeRoom(selectedRoom); // Remove the selected room from available rooms
-
         // Assume the user fills out personal details and address
         Address address = new Address("USA", "123 Main St", "", "New York", "12345", "Additional details");
 
@@ -75,48 +72,16 @@ public class Main {
         } else {
             System.out.println("Booking not found.");
         }
+        
+        // Create a sample EmailSender
+        EmailSender emailSender = new EmailSender("tuhocoder@gmail.com", "Th@nhtu@10");
+        //emailSender.sendEmail("tuho9428@gmail.com", num);
+        System.out.println("An email send to " + guest1.getEmailAddress() + "\nwith your booking number: " + num);
 
     }
     	/**
-    	
-        // Create a sample Room
-        Room room1 = new Room("001", "Single", 90.0, "available");
-        Room room2 = new Room("002", "Double", 200.0, "available");
-        Room room3 = new Room("103", "Triple", 250.0, "available");
-        Room room4 = new Room("104", "Quad", 300.0, "available");
-        
-        List<Room> rooms = new ArrayList<>();
-		rooms.add(room1);
-		rooms.add(room2);
-		rooms.add(room3);
-		rooms.add(room4);
 
-        // Create a sample Guest
-        Guest guest1 = new Guest("Mr.", "John", "Doe", "1234567890", "john.doe@example.com");
-        System.out.println(guest1);
 
-        // Create a sample Address for the guest
-        Address address1 = new Address("123 Main St", "Cityville", "WA", "12345" ,"USA" );
-        System.out.println(address1);
-        
-        // Assign the address to the guest
-        guest1.setAddress(address1);
-        System.out.println(guest1);
-
-        // Create a sample Reservation
-        //Reservation reservation1 = new Reservation(LocalDate.of(2023, 5, 8), LocalDate.of(2023, 10, 8), guest1);
-        //System.out.println(reservation1);
-
-        //Create a sample RoomReservation
-        RoomReservation roomReservation1 = new RoomReservation(room1, LocalDate.of(2023, 5, 8), LocalDate.of(2023, 10, 8), guest1);
-        System.out.println(roomReservation1);
-        
-        
-        // Implementation to generate a unique booking number
-        // You can use your own logic here, such as generating a random string or using a counter
-        // For simplicity, let's assume it generates a random 6-digit number
-        String bookingNum = "JA" + BookingSystem.generateBookingNumber();
-        System.out.println(bookingNum);
 
         
 
